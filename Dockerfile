@@ -9,7 +9,8 @@ RUN apt install -y \
     git \
     pkg-config \
     libssl-dev \
-    libsasl2-dev
+    libsasl2-dev \
+    libc++-dev
 
 #installing boost 1.69
 RUN cd ~ \
