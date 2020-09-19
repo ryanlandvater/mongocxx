@@ -6,7 +6,6 @@ RUN apt install -y \
     openssh-server \
     clang-6.0 \
     cmake \
-#    libboost-dev \
     git \
     pkg-config \
     libssl-dev \
@@ -14,16 +13,16 @@ RUN apt install -y \
 
 #installing boost 1.69
 RUN cd ~ \
-    && wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz \
-    && tar xzf boost_1_69_0.tar.gz \
-    && cd boost_1_69_0 \
+    && wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz \
+    && tar xzf boost_1_74_0.tar.gz \
+    && cd boost_1_74_0 \
     && ./bootstrap.sh \
     --prefix=/usr/local/ \
     --with-libraries=serialization,thread,system \
     && ./b2 --show_libraries link=shared threading=multi install \
     && cd ~ \
-    && rm boost_1_69_0.tar.gz \
-    && rm -rf boost_1_69_0
+    && rm boost_1_74_0.tar.gz \
+    && rm -rf boost_1_74_0
 
 #installing the mongoc dependencies and driver
 RUN cd ~ \
