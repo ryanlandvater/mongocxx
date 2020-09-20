@@ -1,3 +1,5 @@
+## Copyright Ryan Lanvdvater, 2020
+
 FROM ubuntu:18.04
 RUN apt -y update \
     && apt -y upgrade
@@ -19,7 +21,7 @@ RUN cd ~ \
     && cd boost_1_74_0 \
     && ./bootstrap.sh \
     --prefix=/usr/local/ \
-    --with-libraries=serialization,thread,system \
+    --with-libraries=serialization,thread,system,chrono \
     && ./b2 --show_libraries link=shared threading=multi install \
     && cd ~ \
     && rm boost_1_74_0.tar.gz \
