@@ -12,7 +12,9 @@ RUN apt install -y \
     pkg-config \
     libssl-dev \
     libsasl2-dev \
-    libc++-dev
+    libc++-dev \
+    libc++abi-dev
+    
 
 #installing boost 1.69
 RUN cd ~ \
