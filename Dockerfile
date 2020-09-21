@@ -9,6 +9,7 @@ RUN apt install -y \
     clang-6.0 \
     cmake \
     git \
+    apt-utils \
     pkg-config \
     libssl-dev \
     libsasl2-dev \
