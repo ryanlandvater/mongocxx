@@ -19,16 +19,16 @@ RUN apt install -y \
 
 #installing boost 1.69
 RUN cd ~ \
-    && wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz \
-    && tar xzf boost_1_74_0.tar.gz \
-    && cd boost_1_74_0 \
+    && wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz \
+    && tar xzf boost_1_73_0.tar.gz \
+    && cd boost_1_73_0 \
     && ./bootstrap.sh \
     --prefix=/usr/local/ \
     --with-libraries=serialization,thread,system,chrono \
     && ./b2 --show_libraries link=shared threading=multi install \
     && cd ~ \
-    && rm boost_1_74_0.tar.gz \
-    && rm -rf boost_1_74_0
+    && rm boost_1_73_0.tar.gz \
+    && rm -rf boost_1_73_0
 
 #installing the mongoc dependencies and driver
 RUN cd ~ \
