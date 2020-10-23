@@ -47,9 +47,9 @@ RUN cd ~ \
 
 #installing mongocxx driver - connects c++ to mongo
 RUN cd ~ \
-    && wget https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.5.0/mongo-cxx-driver-r3.5.0.tar.gz \
-    && tar -xzf mongo-cxx-driver-r3.5.0.tar.gz \
-    && cd mongo-cxx-driver-r3.5.0/build \
+    && wget https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.0/mongo-cxx-driver-r3.6.0.tar.gz \
+    && tar -xzf mongo-cxx-driver-r3.6.0.tar.gz \
+    && cd mongo-cxx-driver-r3.6.0/build \
     && cmake ..  \
     -DCMAKE_BUILD_TYPE=Release  \
     -DBSONCXX_POLY_USE_BOOST=1  \
