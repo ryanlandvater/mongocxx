@@ -58,5 +58,5 @@ RUN cd ~ \
     -DCMAKE_C_COMPILER=/usr/bin/clang-6.0 \
     && make install \
     && cd ~ \
-    && rm mongo-cxx-driver-r3.5.0.tar.gz \
-    && rm -rf mongo-cxx-driver-r3.5.0
+    && rm mongo-cxx-driver-r3.6.0.tar.gz \
+    && rm -rf mongo-cxx-driver-r3.6.0
