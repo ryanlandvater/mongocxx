@@ -1,6 +1,6 @@
 ## Copyright Ryan Lanvdvater, 2020
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 RUN apt -y update \
     && apt -y upgrade
 
