@@ -1,6 +1,8 @@
-## Copyright Ryan Lanvdvater, 2020
+## Copyright Ryan Lanvdvater, 2020-2021
 
 FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt -y update \
     && apt -y upgrade
 
