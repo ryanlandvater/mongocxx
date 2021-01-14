@@ -1,12 +1,13 @@
 ## Copyright Ryan Lanvdvater, 2020-2021
 
 FROM ubuntu:20.04
-ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt -y update \
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt -y update \
     && apt -y upgrade
 
-RUN apt install -y \
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt install -y \
     openssh-server \
     clang-6.0 \
     cmake \
@@ -16,8 +17,10 @@ RUN apt install -y \
     libssl-dev \
     libsasl2-dev \
     libc++-dev \
-    libc++abi-dev
-    
+    libc++abi-dev \
+    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100 \
+    && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
+
 
 #installing boost 1.69
 RUN cd ~ \
@@ -26,8 +29,8 @@ RUN cd ~ \
     && cd boost_1_73_0 \
     && ./bootstrap.sh \
     --prefix=/usr/local/ \
-    --with-libraries=serialization,thread,system,chrono \
-    && ./b2 --show_libraries link=shared threading=multi install \
+    --with-libraries=thread,system,chrono \
+    && ./b2 --show_libraries link=shared threading=multi toolset=clang install \
     && cd ~ \
     && rm boost_1_73_0.tar.gz \
     && rm -rf boost_1_73_0
@@ -62,3 +65,14 @@ RUN cd ~ \
     && cd ~ \
     && rm mongo-cxx-driver-r3.6.0.tar.gz \
     && rm -rf mongo-cxx-driver-r3.6.0
+
+#install flatbuffers -- serialization routine
+RUN cd ~ \
+    && git clone https://github.com/google/flatbuffers.git \
+    && cd flatbuffers \
+    && cmake -G "Unix Makefiles" . \
+    -DCMAKE_C_COMPILER=/usr/bin/clang-6.0 \
+    -DCMAKE_CXX_COMPILER=/usr/bin/clang++-6.0 \
+    && make install \
+    && cd ~ \
+    && rm -rf flatbuffers
